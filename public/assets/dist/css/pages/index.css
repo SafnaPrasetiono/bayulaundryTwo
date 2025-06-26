@@ -1,0 +1,29 @@
+body{
+    font-family: "Nunito", sans-serif;
+}
+
+.img-shopping-cart{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.tmp-image{
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    object-position: center;
+    width: 64px; height: 64px;
+}
+
+.tmp-image-nav{
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    object-position: center;
+    width: 32px; height: 32px;
+}
