@@ -105,7 +105,7 @@
                             <i class="fas fa-presentation slider-icons"></i>Pages
                         </a>
                         <div class="accordion-collapse collapse" id="page" data-bs-parent="#slider-navbar">
-                            <a class="nav-link slider-link ps-3" href="#">
+                            <a class="nav-link slider-link ps-3" href="{{route('admin.pages.home')}}">
                                 <i class="far fa-circle fa-sm fa-fw slider-icons"></i>Home Pages
                             </a>
                         </div>
@@ -157,7 +157,6 @@
     <script src="{{ asset('/assets/library/js/alert.js') }}"></script>
     <script src="{{ asset('/assets/library/js/popper.js') }}"></script>
     <script src="{{ asset('/assets/editor/ckeditor.js') }}"></script>
-    {{-- <script src="{{ asset('/assets/library/js/textEditor.js') }}"></script> --}}
     <script src="{{ asset('/assets/app/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/assets/dist/js/admin/panel.js') }}"></script>
     <script src="{{ asset('/assets/OwlCarousel/owl.carousel.min.js') }}"></script>

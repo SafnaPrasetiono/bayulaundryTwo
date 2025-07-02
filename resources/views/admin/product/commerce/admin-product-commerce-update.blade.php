@@ -5,7 +5,7 @@
             <p class="text-them-sec mb-0">Selamat datang kembali di aplikasi laundryku</p>
         </div>
 
-        <form action="" method="POST" enctype="multipart/form-data" wire:submit='save'>
+        <form action="" method="POST" enctype="multipart/form-data" wire:submit='update'>
             <div class="d-block rounded bg-white p-3 mb-3">
                 <div class="row gx-3">
                     <div class="col-12 col-md-7 col-lg-7">
@@ -195,7 +195,7 @@
 
 
             <div class="d-block rounded bg-white p-3 mb-3">
-                <button type="submit" class="btn btn-outline-success" name="save">Save Product</button>
+                <button type="submit" class="btn btn-outline-success" name="update">Save Product</button>
             </div>
         </form>
     </div>

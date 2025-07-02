@@ -1,29 +1,41 @@
-body{
+body {
     font-family: "Nunito", sans-serif;
 }
 
-.img-shopping-cart{
+.img-shopping-cart {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.tmp-image{
+.tmp-image {
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
     object-position: center;
-    width: 64px; height: 64px;
+    width: 64px;
+    height: 64px;
 }
 
-.tmp-image-nav{
+.tmp-image-nav {
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     object-fit: cover;
     object-position: center;
-    width: 32px; height: 32px;
+    width: 32px;
+    height: 32px;
+}
+
+.product-title {
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    min-height: 50px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

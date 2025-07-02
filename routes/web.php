@@ -10,6 +10,7 @@ use App\Livewire\Admin\Account\AdminAccountUpdate;
 use App\Livewire\Admin\Home\Dashboard;
 use App\Livewire\Admin\Order\AdminOrder;
 use App\Livewire\Admin\Order\AdminOrderDetail;
+use App\Livewire\Admin\Pages\ContentHomePages;
 use App\Livewire\Admin\Payment\AdminPaymentMethod;
 use App\Livewire\Admin\Product\Commerce\AdminProductCommerceCreate;
 use App\Livewire\Admin\Product\Commerce\AdminProductCommerceData;
@@ -113,6 +114,10 @@ Route::prefix('admin')->middleware(adminAuthenticate::class)->group(function () 
     // ORDERS
     Route::get('/orders', AdminOrder::class)->name('admin.order');
     Route::get('/orders/{id}/{inv}', AdminOrderDetail::class)->name('admin.order.detail');
+
+
+    // PAGES
+    Route::get('/pages/home-content', ContentHomePages::class)->name('admin.pages.home');
 
 
     // LOGOUT

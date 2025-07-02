@@ -46,7 +46,7 @@ class AdminProductCommerceUpdate extends Component
 
         try {
             // SAVE_PRODUCT
-            $product = new product();
+            $product = product::find($this->id);
             $product->title = $this->title;
             $product->slug = Str::slug($this->title);
             $product->price = $this->price;
