@@ -78,7 +78,7 @@
                         <div class="col-lg-8">
                             @foreach (session('cartLaundry') as $index => $item)
                                 <div class="d-flex gap-3 px-3 py-2 mb-3 border rounded shadow-sm position-relative align-items-center">
-                                    <input class="form-check-input p-2" type="checkbox" value="{{$item['product_id']}}" id="defaultCheck1" wire:model='checkCartLaundry' wire:change='checkedLaundry'>
+                                    <input class="form-check-input p-2" type="checkbox" value="{{$item['product_id']}}" id="defaultCheck1" wire:model.live='checkCartLaundry'>
 
                                     <div class="d-flex gap-2">
                                         <img src="/images/product/{{ $item['images'] }}" class="img-fluid"
@@ -107,19 +107,19 @@
 
                                         <div class="d-flex position-absolute end-0 bottom-0 gap-2 m-2">
                                             <div class="input-group input-group-sm" style="width: 130px">
-                                                <button class="btn btn-outline-secondary btn-sm" type="button"
+                                                <button class="btn btn-outline-secondary btn-sm disabled" type="button"
                                                     id="button-addon1" wire:click="plusLaundry({{ $item['product_id'] }})">
                                                     <i class="fas fa-plus fa-xs fa-fw"></i>
                                                 </button>
                                                 <input type="text" class="form-control text-center"
                                                     aria-describedby="button-addon1" value="{{ $item['qty'] }}">
-                                                <button class="btn btn-outline-secondary btn-sm" type="button"
+                                                <button class="btn btn-outline-secondary btn-sm disabled" type="button"
                                                     id="button-addon1" wire:click="minusLaundry({{ $item['product_id'] }})">
                                                     <i class="fas fa-minus fa-xs fa-fw"></i>
                                                 </button>
                                             </div>
                                             <button class="btn btn-outline-danger btn-sm"
-                                                wire:click='removeCart({{ $item['product_id'] }})'>
+                                                wire:click='removeCartLaundry({{ $item['product_id'] }})'>
                                                 <i class="fas fa-trash fa-sm fa-fw"></i>
                                             </button>
                                         </div>
@@ -158,7 +158,11 @@
                                 </p>
                                 <hr>
                                 <div class="d-grid">
-                                    <a href="{{ route('checkout') }}" class="btn btn-success @disabled($checkCartLaundry == false)" >Order Sekarang</a>
+                                    @if (count($checkCartLaundry) > 1)
+                                    <a href="#" class="btn btn-success @disabled(count($checkCartLaundry) == 0)" wire:click="$dispatch('info', 'Laundry tidak bisa banyak!')">Order Sekarang</a>
+                                    @else
+                                    <a href="{{ route('checkout') }}" class="btn btn-success @disabled(count($checkCartLaundry) == 0)" >Order Sekarang</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -1,39 +1,5 @@
 @push('style')
-    <style>
-        .banner1 {
-            background-image: url('/images/banner/banner2.png');
-            background-position: top;
-            background-size: cover;
-        }
-
-        .product-card {
-            width: 25rem;
-            overflow: hidden;
-        }
-
-        .product-card-image {
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        @media(max-width: 576px) {
-            .product-card {
-                width: 21rem;
-            }
-        }
-
-        .ratio-21x8 {
-            --bs-aspect-ratio: calc(8 / 21 * 100%);
-        }
-
-        .carousel-content {
-            display: flex;
-            grid: 0;
-            margin-right: 3.5%;
-            margin-left: 3.5%;
-        }
-    </style>
+    
 @endpush
 
 
@@ -194,7 +160,7 @@
     </div>
 
 
-    <div class="pt-5 pb-4 py-md-5 rounded-top-12 bg-white">
+    <div class="pt-5 pb-4 py-md-5 rounded-top-12 bg-white" wire:ignore>
         <div class="container pt-2 pb-5">
             <div class="d-block mb-5">
                 <h2 class="fw-bold mb-0">Pake Murah Laundry</h2>
@@ -205,10 +171,10 @@
             {{-- <div class="d-block d-md-none"> --}}
             <div id="owl-one" class="owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
-                    <div class="owl-stage d-flex">
+                    <div class="owl-stage">
 
                         @foreach ($product as $index => $item)
-                            <div class="owl-item d-flex align-self-stretch">
+                            <div class="owl-item align-self-stretch">
                                 <div class="card product-card">
                                     <div class="product-card-image ratio ratio-4x3"
                                         style="background-image: url('/images/product/{{ $item->images }}')"></div>
@@ -240,10 +206,7 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <input type="text" name="product_id" class="d-none"
-                                            value="{{ $item->product_id }}">
-                                        <button type="button" wire:click='order({{ $item->product_id }})'
-                                            class="btn btn-outline-primary btn-lg w-100 mb-4">Pilih paket</button>
+                                        <button type="button" wire:click='order({{ $item->product_id }})' class="btn btn-outline-primary btn-lg w-100 mb-4">Pilih paket</button>
                                         <hr class="soft">
                                         <ul style="list-style: none" class="px-2">
                                             @foreach ($item->description_list as $items)
@@ -278,17 +241,17 @@
     </div>
 
     <div class="py-5">
-        <div class="container">
-            <div class="d-block mb-5">
+        <div class="container mb-3">
+            <div class="d-block mb-4">
                 <h2 class="fw-bold mb-0">Produk Laundrymu</h2>
                 <p class="mb-0">Laundrymu juga menyedikan produk laundry loh, yuk berbelanja produk sekarang</p>
             </div>
-            <div class="row g-3">
+            <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xxl-6">
                 @foreach ($commerce as $index => $item)
-                <div class="col-6 col-md-4 col-lg-3">
+                <div class="col">
                     <div class="card">
                         <img src="/images/product/{{$item->images}}" alt="" class="card-img-top ratio ratio-1x1" style="object-fit: cover; object-position: center;">
-                        <div class="card-body">
+                        <div class="card-body p-2">
                             <p class="product-title">{{ $item->title }}</p>
                             <p class="text-danger">Rp {{number_format($item->price, 0, ',', '.')}}</p>
                             <a href="#" class="stretched-link"></a>
@@ -354,7 +317,7 @@
         </div>
     </div>
 
-    <div class="py-5">
+    <div class="py-5" wire:ignore>
         <div class="container py-4">
             <div class="title-testimony text-center mb-4">
                 <h5 class="fw-bold">User Testimonial</h5>
@@ -403,49 +366,5 @@
 
 
 @push('scripts')
-    <script>
-        $('#owl-one').owlCarousel({
-            // margin: 24,
-            merge: true,
-            autoWidth: true,
-            dots: false,
-            responsive: {
-                0: {
-                    loop: true,
-                    margin: 18,
-                    center: true,
-                },
-                768: {
-                    margin: 24,
-                },
-            }
-        });
-
-        var owl = $('#owl-two');
-        owl.owlCarousel({
-            items: 1,
-            loop: false,
-            margin: 24,
-            dots: false,
-            autowidth: true,
-            responsive: {
-                480: {
-                    items: 2
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 4,
-                },
-
-            }
-        })
-        $('.customNextBtn').click(function() {
-            owl.trigger('next.owl.carousel');
-        })
-        $('.customPrevBtn').click(function() {
-            owl.trigger('prev.owl.carousel', [300]);
-        })
-    </script>
+    <script src="{{url('/assets/dist/js/pages/home.js')}}"></script>
 @endpush

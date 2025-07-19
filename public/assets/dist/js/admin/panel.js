@@ -25,13 +25,10 @@ $("#LogOut").click(() => {
         confirmButtonText: "Yes, logout!",
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = '/admin/logout';
+            window.location.href = "/admin/logout";
         }
     });
 });
-
-
-
 
 window.addEventListener("success", (event) => {
     Swal.fire({
@@ -66,6 +63,6 @@ window.addEventListener("info", (event) => {
     });
 });
 
-window.addEventListener('hiddenModal', (event) => {
-    $('#'+ event.detail +'').modal("hide");
-})
+window.addEventListener("hiddenModal", (event) => {
+    $("#" + event.detail + "").modal("hide");
+});

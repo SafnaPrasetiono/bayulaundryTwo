@@ -31,6 +31,7 @@ use App\Livewire\Pages\Privacy;
 use App\Livewire\Pages\Termcondition;
 use App\Livewire\Auth\UserActivation;
 use App\Livewire\Pages\checkout\Checkout;
+use App\Livewire\Pages\ProductPages;
 use App\Livewire\Pages\ShoppingCart;
 use App\Livewire\User\UserAddresses;
 use App\Livewire\User\UserOrders;
@@ -47,6 +48,7 @@ Route::get('/privasi', Privacy::class)->name('privacy');
 Route::get('/cara_pemesanan', Howtopayment::class)->name('howpayment');
 Route::get('/term&condition', Termcondition::class)->name('termcondition');
 
+Route::get('/product', ProductPages::class)->name('product');
 
 
 

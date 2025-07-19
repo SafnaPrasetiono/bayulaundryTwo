@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-   <title>Laundrymu - {{ $title ?? '' }}</title>
-   <link rel="stylesheet" href="{{ asset('/assets/app/css/bootstrap.min.css') }}">
-   <link rel="stylesheet" href="{{ asset('/assets/icons/css/all.min.css') }}">
+    <title>Laundrymu - {{ $title ?? '' }}</title>
+    <link rel="stylesheet" href="{{ asset('/assets/app/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/icons/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/dist/css/pages/index.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/OwlCarousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/OwlCarousel/css/owl.theme.default.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     @stack('style')
     @livewireStyles
 </head>
@@ -24,8 +24,8 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">LaundryMu</a>
-            <a class="btn position-relative link-dark d-lg-none ms-auto" href="#">
+            <a class="navbar-brand fw-bold" href="{{ route('index') }}">LaundryMu</a>
+            <a class="btn position-relative link-dark d-lg-none ms-auto" href="{{ route('order') }}">
                 <i class="fas fa-shopping-cart fa-sm fa-fw" aria-hidden="true"></i>
                 @if (session('cart') && count(session('cart')) > 0)
                     <span class="position-absolute top-0 start-100 mt-1 translate-middle badge rounded-pill bg-danger">
@@ -36,22 +36,28 @@
             <botton class="btn d-lg-none">
                 <i class="fas fa-search fa-sm fa-fw"></i>
             </botton>
-            <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#slider">
-                <i class="fas fa-bars fa-sm fa-fw"></i>
-            </button>
+            @auth('users')
+                <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#slider">
+                    <i class="fas fa-bars fa-sm fa-fw"></i>
+                </button>
+            @else
+                <button class="btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                    <i class="fas fa-bars fa-sm fa-fw"></i>
+                </button>
+            @endauth
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav gap-2 align-items-stretch ms-auto">
-                    <li class="nav-item align-self-center">
+                <ul class="navbar-nav gap-2 align-items-stretch ms-lg-auto">
+                    <li class="nav-item align-self-lg-center">
                         <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
                     </li>
-                    <li class="nav-item align-self-center">
-                        <a class="nav-link" href="#">Product</a>
+                    <li class="nav-item align-self-lg-center">
+                        <a class="nav-link" href="{{ route('product') }}">Product</a>
                     </li>
-                    <li class="nav-item align-self-center">
-                        <a class="nav-link" href="{{route('about')}}">Aboutme</a>
+                    <li class="nav-item align-self-lg-center">
+                        <a class="nav-link" href="{{ route('about') }}">Aboutme</a>
                     </li>
-                    <li class="nav-item align-self-center">
-                        <a class="nav-link position-relative link-dark" href="{{route('order')}}">
+                    <li class="nav-item align-self-lg-center d-none d-lg-inline-block">
+                        <a class="nav-link position-relative link-dark" href="{{ route('order') }}">
                             <i class="far fa-shopping-basket" aria-hidden="true"></i>
                             @if (session('cart') && count(session('cart')) > 0)
                                 <span
@@ -61,24 +67,30 @@
                             @endif
                         </a>
                     </li>
-                    <li class="nav-item align-self-center">
+                    <li class="nav-item align-self-lg-center d-none d-lg-inline-block">
                         <a class="nav-link link-dark" href="#">
                             <i class="far fa-search"></i>
                         </a>
                     </li>
                     @auth('users')
-                        <li class="nav-item align-self-center">
+                        <li class="nav-item align-self-lg-center">
                             <a href="{{ route('user.profile') }}" class="nav-link link-dark">
-                                <img class="tmp-image-nav" src="{{ url('/images/avatar/' . auth('users')->user()->avatar) }}"
-                                    alt="user">
+                                <img class="tmp-image-nav"
+                                    src="{{ url('/images/avatar/' . auth('users')->user()->avatar) }}" alt="user">
                             </a>
                         </li>
                     @else
-                        <li class="nav-item align-self-center">
-                            <a href="{{ route('signup') }}" class="btn btn-outline-success rounded px-3">DAFTAR</a>
+                        <li class="nav-item d-inline d-lg-none align-self-lg-center">
+                            <a class="nav-link" href="{{ route('signup') }}">Daftar</a>
                         </li>
-                        <li class="nav-item align-self-center">
-                            <a href="{{ route('login') }}" class="btn btn-success rounded px-4">MASUK</a>
+                        <li class="nav-item d-none d-lg-inline align-self-lg-center">
+                            <a class="btn rounded-pill btn-outline-success" style="width: 120px" href="{{ route('signup') }}">Daftar</a>
+                        </li>
+                        <li class="nav-item d-inline d-lg-none align-self-lg-center">
+                            <a class="nav-link" href="{{ route('login') }}">Masuk</a>
+                        </li>
+                        <li class="nav-item d-none d-lg-inline align-self-lg-center">
+                            <a class="btn rounded-pill btn-success" style="width: 120px" href="{{ route('login') }}">Masuk</a>
                         </li>
                     @endauth
                 </ul>
@@ -86,7 +98,7 @@
         </div>
     </nav>
     <main>
-        {{$slot }}
+        {{ $slot }}
     </main>
 
     <footer class="bg-primary text-light">

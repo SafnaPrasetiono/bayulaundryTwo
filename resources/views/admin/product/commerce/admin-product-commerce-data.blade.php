@@ -17,7 +17,7 @@
                             data-bs-target="#ModalDeleteAllData">Delete</button>
                     @endif
                     <div class="ms-auto position-relative">
-                        <input type="text" class="form-control me-4" placeholder="Search..." wire:model="search"
+                        <input type="text" class="form-control me-4" placeholder="Search..." wire:model.live="search"
                             wire:keydown.enter="searchPush">
                         <button class="btn position-absolute border-0 top-0 end-0">
                             <i class="fas fa-search fa-sm fa-fw"></i>
@@ -35,7 +35,7 @@
                             <div class="dropdown-body p-3">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <label for="status" class="form-label">Status type</label>
-                                    <select wire:model="status" name="status" class="form-select form-select-sm col-3"
+                                    <select wire:model.live="status" name="status" class="form-select form-select-sm col-3"
                                         id="status" style="width: 120px">
                                         <option value="pending">PENDING</option>
                                         <option value="progress">PROGRESS</option>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <label for="pages" class="form-label">Page of view</label>
-                                    <select wire:model="pages" name="pages" class="form-select form-select-sm col-3"
+                                    <select wire:model.live="pages" name="pages" class="form-select form-select-sm col-3"
                                         id="pages" style="width: 72px">
                                         <option value="5">5</option>
                                         <option value="10">10</option>
@@ -85,12 +85,12 @@
                                         class="form-check-input" value="{{ $item->product_id }}">
                                 </th>
                                 <th class="text-them">
-                                    <div class="product-card-image ratio ratio-4x3 rounded"
+                                    <div class="product-card-image ratio ratio-1x1 rounded"
                                         style="background-image: url('/images/product/{{ $item->images }}')">
                                     </div>
                                 </th>
-                                <td>{{ $item->title }}</td>
-                                <td>Rp. {{ number_format($item->price, 0, '.', ',') }}</td>
+                                <td class="text-wrap">{{ $item->title }}</td>
+                                <td class="text-nowrap">Rp. {{ number_format($item->price, 0, '.', ',') }}</td>
                                 <td>
                                     @if ($item->is_active == 1)
                                         <span class="badge text-bg-success">Active</span>
@@ -98,9 +98,7 @@
                                         <span class="badge text-bg-secondary">Non Active</span>
                                     @endif
                                 </td>
-                                <td>
-                                    {{ $item->created_at }}
-                                </td>
+                                <td> {{ date_format($item->created_at, 'Y-m-d') }}</td>
                                 <td class="gap-1">
                                     <div class="dropstart">
                                         <button class="btn border-0" type="button" data-bs-toggle="dropdown">

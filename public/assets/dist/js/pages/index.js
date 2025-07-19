@@ -47,3 +47,9 @@ window.addEventListener("info", (event) => {
         timer: 2000,
     });
 });
+
+
+
+
+
+

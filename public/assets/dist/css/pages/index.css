@@ -33,9 +33,60 @@ body {
 .product-title {
     text-transform: capitalize;
     margin-bottom: 0px;
-    min-height: 50px;
+    min-height: 45px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.3;
+}
+
+.bg-gray-220 {
+    background-color: rgb(220, 220, 220);
+}
+
+
+
+
+.banner1 {
+    background-image: url("/images/banner/banner2.png");
+    background-position: top;
+    background-size: cover;
+}
+
+.product-card {
+    width: 25rem;
+    overflow: hidden;
+}
+
+.product-card-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        width: 21rem;
+    }
+}
+
+.ratio-21x8 {
+    --bs-aspect-ratio: calc(8 / 21 * 100%);
+}
+
+.ratio-21x4{
+    --bs-aspect-ratio: calc(4 / 21 * 100%);
+}
+
+.object-fit{
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-content {
+    display: flex;
+    grid: 0;
+    margin-right: 3.5%;
+    margin-left: 3.5%;
 }

@@ -12,7 +12,7 @@
                 <i class="fas fa-home fa-sm fa-fw" style="width: 28px"></i>
                 <span class="fw-bold">Halaman Depan</span>
             </a>
-            <a class="nav-link px-0 link-dark" href="#">
+            <a class="nav-link px-0 link-dark" href="{{ route('product') }}">
                 <i class="fas fa-boxes fa-sm fa-fw" style="width: 28px"></i>
                 <span class="fw-bold">Lihat Produk</span>
             </a>
@@ -28,7 +28,7 @@
                 <a style="padding-left: 2rem" class="nav-link @if (Route::currentRouteName() == 'admin.dashboard') link-primary @else link-dark @endif" href="#">Ubah Password</a>
                 <a style="padding-left: 2rem" class="nav-link @if (Route::currentRouteName() == 'admin.dashboard') link-primary @else link-dark @endif" href="#">Privasi</a>
             </div>
-            <a class="nav-link px-0 link-dark" href="#">
+            <a class="nav-link px-0 link-dark" href="{{route('user.orders')}}">
                 <i class="fas fa-shopping-basket fa-sm fa-fw" style="width: 28px"></i>
                 <span class="fw-bold">Pesanan Saya</span>
             </a>
