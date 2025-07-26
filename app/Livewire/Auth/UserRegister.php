@@ -51,7 +51,7 @@ class UserRegister extends Component
                     'email' => $this->email,
                     'password' => bcrypt($this->password),
                     'avatar' => "default.png",
-                    'active' => 3,
+                    'is_active' => 3,
                     'vKey' => $Vkey,
                 ]);
                 Mail::to($this->email)->send(new UserRegisterMail($data));

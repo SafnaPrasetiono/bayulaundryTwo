@@ -58,7 +58,7 @@
             <div class="slider-body">
                 <div class="container">
                     <nav class="nav flex-column" id="slider-navbar">
-                        <a class="nav-link slider-link" href="#">
+                        <a class="nav-link slider-link" href="{{route('admin.dashboard')}}">
                             <i class="fas fa-home slider-icons"></i>Dashboard
                         </a>
                         <a class="nav-link slider-link" href="{{route('admin.profile')}}">

@@ -2,9 +2,12 @@
 
 namespace App\Livewire\Auth;
 
+use App\Mail\UserGetPasswordMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Laravel\Socialite\Facades\Socialite;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -48,9 +51,41 @@ class UserLogin extends Component
             $this->dispatch('error', 'Email dan Password anda salah!');
         }
     }
-    
 
-        #[Title('Login Form')]
+
+    public function loginWithGoogle()
+    {
+        $url = Socialite::driver('google')->redirect()->getTargetUrl();
+
+        $this->dispatch('open-google-login', url: $url);
+    }
+
+    public function getPassword()
+    {
+        $this->validate([
+            'email' => 'required|min:4|email|max:255',
+        ], [
+            'email.required' => 'Alamat email tidak boleh kosong!',
+            'email.min' => 'Alamat email tidak dikenal!',
+            'email.email' => 'Alamat email tidak dikenal!',
+            'email.max' => 'Alamat email tidak dikenal!',
+        ]);
+
+        if ($this->email) {
+            $data = User::where('email', $this->email)->first();
+            if($data){
+                Mail::to($this->email)->send(new UserGetPasswordMail($data));
+                $this->reset(['email', 'password']);
+                $this->dispatch('success', 'Verifikasi telah dikirim melalui email');
+            }else{
+                $this->dispatch('info', 'Oops, Alamat email tidak terdaftar!');
+            }
+        } else {
+            $this->dispatch('error', 'Masukan alamat email!');
+        }
+    }
+
+    #[Title('Login Form')]
     #[Layout('layouts.authLayouts')]
     public function render()
     {

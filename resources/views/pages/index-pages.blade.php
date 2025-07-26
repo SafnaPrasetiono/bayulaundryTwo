@@ -1,5 +1,16 @@
 @push('style')
-    
+    <style>
+        .product-card {
+            width: 25rem !important;
+            overflow: hidden;
+        }
+
+        @media (max-width: 576px) {
+            .product-card {
+                width: 21rem !important;
+            }
+        }
+    </style>
 @endpush
 
 
@@ -160,7 +171,7 @@
     </div>
 
 
-    <div class="pt-5 pb-4 py-md-5 rounded-top-12 bg-white" wire:ignore>
+    <div class="pt-5 pb-4 py-md-5" wire:ignore>
         <div class="container pt-2 pb-5">
             <div class="d-block mb-5">
                 <h2 class="fw-bold mb-0">Pake Murah Laundry</h2>
@@ -176,8 +187,11 @@
                         @foreach ($product as $index => $item)
                             <div class="owl-item align-self-stretch">
                                 <div class="card product-card">
-                                    <div class="product-card-image ratio ratio-4x3"
-                                        style="background-image: url('/images/product/{{ $item->images }}')"></div>
+                                    <div class="ratio ratio-4x3">
+                                        <img src="/images/product/{{ $item->images }}" alt="{{ $item->images }}"
+                                            width="100%" height="100vh"
+                                            style="object-fit: cover; object-position: center;">
+                                    </div>
                                     <div class="card-body py-4">
                                         <div class="card-titles mb-2">
                                             <h5 class="mb-0">{{ $item->title }}</h5>
@@ -206,7 +220,8 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <button type="button" wire:click='order({{ $item->product_id }})' class="btn btn-outline-primary btn-lg w-100 mb-4">Pilih paket</button>
+                                        <button type="button" wire:click='order({{ $item->product_id }})'
+                                            class="btn btn-outline-primary btn-lg w-100 mb-4">Pilih paket</button>
                                         <hr class="soft">
                                         <ul style="list-style: none" class="px-2">
                                             @foreach ($item->description_list as $items)
@@ -228,36 +243,42 @@
         </div>
     </div>
 
-    <div class="py-5" style="background-color: rgb(240, 240, 240)">
+    <div class="bg-purple-gradient text-white py-5">
         <div class="container">
-            <div class="text-center py-3">
-                <h1>Buruan Daftar Laundryku</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quod eum reprehenderit, rerum ullam
-                    culpa
-                    hic ab placeat natus consectetur voluptates excepturi</p>
-                <button class="btn btn-outline-primary btn-lg px-5">DAFTAR</button>
+            <div class="d-block text-center py-5">
+                <h1 class="display-5 fw-bold mb-3">
+                    Bergabunglah dengan LaundryMu
+                </h1>
+                <p class="text-center px-lg-5 mb-md-4">Rasakan pengalaman laundry yang berbeda dengan pelayanan
+                    profesional, cepat, dan berkualitas
+                    tinggi. Kepuasan pelanggan adalah prioritas utama kami.</p>
+                <a href="{{ route('signup') }}" class="btn btn-outline-light btn-lg px-5">
+                    DAFTAR SEKARANG
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="py-5">
-        <div class="container mb-3">
+    <div class="py-5 mb-3">
+        <div class="container py-3 py-md-4">
             <div class="d-block mb-4">
                 <h2 class="fw-bold mb-0">Produk Laundrymu</h2>
                 <p class="mb-0">Laundrymu juga menyedikan produk laundry loh, yuk berbelanja produk sekarang</p>
             </div>
             <div class="row g-3 row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xxl-6">
                 @foreach ($commerce as $index => $item)
-                <div class="col">
-                    <div class="card">
-                        <img src="/images/product/{{$item->images}}" alt="" class="card-img-top ratio ratio-1x1" style="object-fit: cover; object-position: center;">
-                        <div class="card-body p-2">
-                            <p class="product-title">{{ $item->title }}</p>
-                            <p class="text-danger">Rp {{number_format($item->price, 0, ',', '.')}}</p>
-                            <a href="#" class="stretched-link"></a>
+                    <div class="col">
+                        <div class="card">
+                            <img src="/images/product/{{ $item->images }}" alt=""
+                                class="card-img-top ratio ratio-1x1"
+                                style="object-fit: cover; object-position: center;">
+                            <div class="card-body p-2">
+                                <p class="product-title">{{ $item->title }}</p>
+                                <p class="text-danger">Rp {{ number_format($item->price, 0, ',', '.') }}</p>
+                                <a href="#" class="stretched-link"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -299,59 +320,148 @@
         </div>
     </div> --}}
 
-    <div class="py-5" style="background-color: rgb(240, 240, 240)">
-        <div class="container pb-3">
-            <div class="title-partner mb-4">
-                <h5 class="fw-bold">Partner Laundryku</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia at dicta enim quasi.</p>
+    <div class="bg-gray py-5">
+        <div class="container py-3 py-md-4">
+            <div class="section-title mb-4">
+                <h2 class="fw-bold">
+                    Keunggulan Layanan Kami
+                </h2>
+                <p>Mengapa ribuan pelanggan mempercayai Rumah Cuci Si Mamak untuk kebutuhan laundry mereka setiap hari.
+                </p>
             </div>
             <div class="row g-4">
-                @for ($x = 0; $x < 8; $x++)
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="alert alert-secondary mb-0" role="alert">
-                            A simple secondary alert—check it out!
-                        </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card-partner rounded p-4 text-center">
+                        <i class="fas fa-shield-alt text-primary mb-2 fs-4"></i>
+                        <div class="fw-bold">Garansi Kualitas</div>
+                        <small class="text-muted">Jaminan kepuasan 100% atau uang kembali</small>
                     </div>
-                @endfor
+                </div>
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="card-partner rounded p-4 text-center">
+                        <i class="fas fa-leaf text-primary mb-2 fs-4"></i>
+                        <div class="fw-bold">Ramah Lingkungan</div>
+                        <small class="text-muted">Deterjen eco-friendly dan proses hemat air</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-partner rounded p-4 text-center">
+                        <i class="fas fa-mobile-alt text-primary mb-2 fs-4"></i>
+                        <div class="fw-bold">Aplikasi Mobile</div>
+                        <small class="text-muted">Pesan dan tracking mudah via smartphone</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-partner rounded p-4 text-center">
+                        <i class="fas fa-award text-primary mb-2 fs-4"></i>
+                        <div class="fw-bold">Teknologi Modern</div>
+                        <small class="text-muted">Mesin cuci premium dan teknik terdepan</small>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card-partner rounded p-4 text-center">
+                        <i class="fas fa-users text-primary mb-2 fs-4"></i>
+                        <div class="fw-bold">Tim Profesional</div>
+                        <small class="text-muted">Staff berpengalaman dan terlatih</small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="py-5" wire:ignore>
         <div class="container py-4">
-            <div class="title-testimony text-center mb-4">
-                <h5 class="fw-bold">User Testimonial</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia at dicta enim quasi.</p>
+            <div class="title-testimony mb-4">
+                <h2 class="fw-bold">Cara Transaksi LaundryMu</h2>
+                <p>Proses laundry yang mudah dan praktis dalam 4 langkah sederhana.</p>
             </div>
             <div id="owl-two" class="owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
-                    <div class="owl-stage">
-                        @for ($i = 0; $i < 8; $i++)
-                            <div class="owl-item">
-                                <div class="card">
-                                    <div class="d-flex flex-column justify-content-center align-items-center py-3">
-                                        <img class="rounded-circle mb-2"
-                                            src="https://i.pinimg.com/736x/cb/4d/99/cb4d9904f620667d89ed35924d99909a.jpg"
-                                            alt="profile" style="width: 46px; height: 46px">
-                                        <p class="fw-bold mb-0">YourName</p>
-                                        <div class="d-block">
-                                            @for ($x = 0; $x < 5; $x++)
-                                                <i class="fas fa-star fa-sm fa-fw text-warning"></i>
-                                            @endfor
-                                        </div>
+                    <div class="owl-stage d-flex selft-align-stretch">
+
+                        <div class="owl-item align-self-stretch">
+                            <div class="card-how-item">
+                                <div class="card-body text-center">
+                                    <div class="card-how text-purple">
+                                        <i class="fad fa-mobile-android-alt fa-4x fa-fw"></i>
                                     </div>
-                                    <div class="card-body pt-2 pb-4">
-                                        <p class="card-text text-center">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing
-                                            elit. Facere, officiis in, iusto illo, neque ipsa sed quisquam laborum
-                                            expedita
-                                            fuga delectus et esse autem vero harum ratione suscipit voluptatibus
-                                            deserunt.
-                                        </p>
-                                    </div>
+                                    <h5 class="fw-bold mb-2">Pesan Online</h5>
+                                    <p class="card-text mb-4">
+                                        Pesan layanan laundry melalui website atau aplikasi mobile kami. Pilih paket
+                                        yang sesuai kebutuhan Anda.
+                                    </p>
                                 </div>
                             </div>
-                        @endfor
+                        </div>
+                        <div class="owl-item align-self-stretch">
+                            <div class="card-how-item">
+                                <div class="card-body text-center">
+                                    <div class="card-how text-purple">
+                                        <i class="fad fa-store fa-4x fa-fw"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Menuju Toko</h5>
+                                    <p class="card-text mb-4">
+                                        Tim kami akan memproses sesuai layanan yang anda pilih ,datang ke lokasi
+                                        yang sudah tertera untuk melanjutkan proses.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item align-self-stretch">
+                            <div class="card-how-item">
+                                <div class="card-body text-center">
+                                    <div class="card-how text-purple">
+                                        <i class="fad fa-recycle fa-4x fa-fw"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Proses Laundry</h5>
+                                    <p class="card-text mb-4">
+                                        Pakaian Anda akan diproses dengan teknologi modern dan deterjen
+                                        berkualitas tinggi oleh tim profesional.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item align-self-stretch">
+                            <div class="card-how-item">
+                                <div class="card-body text-center">
+                                    <div class="card-how text-purple">
+                                        <i class="fad fa-analytics fa-4x fa-fw"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Tracking</h5>
+                                    <p class="card-text mb-4">
+                                        Anda dapat melihat setatus pemesanan laundry anda pada applikasi laundrymu
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item align-self-stretch">
+                            <div class="card-how-item">
+                                <div class="card-body text-center">
+                                    <div class="card-how text-purple">
+                                        <i class="fad fa-truck-container fa-4x fa-fw"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Pengantaran</h5>
+                                    <p class="card-text mb-4">
+                                        Pakaian bersih dan wangi akan diantarkan kembali ke alamat Anda dalam
+                                        kondisi rapi dan siap pakai.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-item align-self-stretch">
+                            <div class="card-how-item">
+                                <div class="card-body text-center">
+                                    <div class="card-how text-purple">
+                                        <i class="fad fa-box-check fa-4x fa-fw"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-2">Selesai</h5>
+                                    <p class="card-text mb-4">
+                                        Pemesanan anda telah selesai dan dapat dilakukan pengecekan
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="owl-nav">
@@ -366,5 +476,5 @@
 
 
 @push('scripts')
-    <script src="{{url('/assets/dist/js/pages/home.js')}}"></script>
+    <script src="{{ url('/assets/dist/js/pages/home.js') }}"></script>
 @endpush

@@ -7,13 +7,15 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-8 col-md-6">
-                    <img src="{{ url('/images/banner/about-kopitu.png') }}" alt="icon" class="img-fluid">
+                    <div class="text-center">
+                        <img src="{{ url('/images/pages/banner/laundrybanner1.png') }}" alt="icon" class="img-fluid w-75">
+                    </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <h1 class="fw-bold text-capitalize">kopitu e-store</h1>
+                    <h1 class="fw-bold text-capitalize">Laundrymu</h1>
                     <hr class="soft mb-4" style="width: 30%">
-                    <p class="mb-4 lh-lg">KOPITU E-Store merupakan platform E-Store asli Indonesia yang berfungsi sebagai
-                        wadah penetrasi pasar digital baik lokal maupun global bagi pelaku UKM. KOPITU E-Store dirancang
+                    <p class="mb-4 lh-lg">Laundrymu merupakan platform E-Store asli Indonesia yang berfungsi sebagai
+                        wadah penetrasi pasar digital baik lokal maupun global bagi pelaku UKM. Laundrymu dirancang
                         ground up untuk menjadi "One Stop Service" atau “Layanan Terpadu Satu Pintu” Indonesia untuk
                         perdagangan melalui platform digital, memberdayakan pelaku UKM Indonesia dalam ekspor, serta
                         mengatasi kendala ekspor yang banyak dialami oleh UKM. </p>
@@ -38,7 +40,7 @@
                         </div>
                         <div class="card-body text-center">
                             <p class="card-title fw-bold fs-4 mb-3">Kurasi produk</p>
-                            <p class="card-text mb-4">Produk yang disediakan kopitu e-store merupakan produk pilihan terbaik
+                            <p class="card-text mb-4">Produk yang disediakan Laundrymu merupakan produk pilihan terbaik
                                 dari para UMKM.</p>
                             <a href="#" class="text-decoration-none stretched-link link-orange">Detail</a>
                         </div>
@@ -65,9 +67,9 @@
                             <img src="{{ url('/images/icons/aboutme/icon-2.svg') }}" alt="icon" width="100px">
                         </div>
                         <div class="card-body text-center">
-                            <p class="card-title fw-bold fs-4 mb-3">Enabler KOPITU</p>
+                            <p class="card-title fw-bold fs-4 mb-3">Enabler</p>
                             <p class="card-text mb-4">Kami menyedikan pendampingan dan perizinan terkait menjual produk
-                                bersama kopitu e-store.</p>
+                                bersama Laundrymu.</p>
                             <a href="#" class="text-decoration-none stretched-link link-orange">Detail</a>
                         </div>
                     </div>
@@ -99,13 +101,13 @@
             </div>
             <div class="row gy-4 align-items-center justify-content-center">
                 <div class="col-12 col-lg-6 order-2 order-lg-1">
-                    <h2 class="fw-bold mb-4">Ayo bergabung dengan <br> <span class="text-orange">Kopitu E-Store</span></h2>
+                    <h2 class="fw-bold mb-4">Ayo bergabung dengan <br> <span class="text-orange">Laundrymu</span></h2>
                     <p class="mb-4 lh-lg">Kami menawarkan layanan terpadu melalui satu portal dengan kemampuan mengatasi
                         permasalahan dari hulu hingga ke hilir. Kami juga menjamin kualitas produk terkurasi agar tetap
                         berdaya saing unggul dengan harga yang kompetitif..</p>
                 </div>
                 <div class="col-9 col-md-8 col-lg-6 order-1 order-lg-2">
-                    <img src="{{ url('/images/banner/why-we.png') }}" alt="" class="img-fluid">
+                    <img src="{{ url('/images/pages/banner/why-we.png') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -116,8 +118,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="text-center">
-                        <h2 class="text-dark">Lokasi Kopitu E-Store</h2>
-                        <p>Berikut ini merupakan peta atau alamat mitra kopitu e-store</p>
+                        <h2 class="text-dark">Lokasi Laundrymu</h2>
+                        <p>Berikut ini merupakan peta atau alamat mitra Laundrymu</p>
                     </div>
                 </div>
                 <div class="col-12">

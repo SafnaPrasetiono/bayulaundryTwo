@@ -6,7 +6,7 @@ use App\Models\orders;
 use App\Models\orders_items;
 use App\Models\shipments;
 use App\Models\User;
-use App\Models\userAddress;
+use App\Models\UserAddress;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\On;
@@ -81,7 +81,7 @@ class Checkout extends Component
             }
 
             // SHIPMENT
-            $shipment = userAddress::find($this->address_id);
+            $shipment = UserAddress::find($this->address_id);
             shipments::create([
                 'order_id' => $order->order_id,
                 'recipient_name' => $shipment->username,

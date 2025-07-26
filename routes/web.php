@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginGoogleCallback;
 use App\Http\Controllers\LogoutHandlerController;
 use App\Http\Middleware\adminAuthenticate;
 use App\Http\Middleware\userAuthenticate;
@@ -30,7 +31,8 @@ use App\Livewire\Pages\IndexPages;
 use App\Livewire\Pages\Privacy;
 use App\Livewire\Pages\Termcondition;
 use App\Livewire\Auth\UserActivation;
-use App\Livewire\Pages\checkout\Checkout;
+use App\Livewire\Auth\UserGetPassword;
+use App\Livewire\Pages\Checkout\Checkout;
 use App\Livewire\Pages\ProductPages;
 use App\Livewire\Pages\ShoppingCart;
 use App\Livewire\User\UserAddresses;
@@ -63,6 +65,9 @@ Route::get('/pemesanan-produk/checkout', Checkout::class)->name('checkout');
 Route::get('/login', UserLogin::class)->name('login');
 Route::get('/signup', UserRegister::class)->name('signup');
 Route::get('/signup/active/{email}/{vkey}', UserActivation::class)->name('signup.activasi');
+Route::get('/change-password/{email}/{vkey}', UserGetPassword::class)->name('getpassword');
+Route::get('/auth/google/callback', [LoginGoogleCallback::class, 'GoogleCallback'])->name('google.callback');
+
 Route::prefix('user')->middleware([userAuthenticate::class])->group(function () {
     Route::get('/account/profile', UserProfile::class)->name('user.profile');
     Route::get('/account/address', UserAddresses::class)->name('user.address');

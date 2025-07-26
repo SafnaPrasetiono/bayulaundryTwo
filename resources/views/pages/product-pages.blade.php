@@ -55,7 +55,8 @@
                 </div>
 
                 <div class="col-12 col-md-9 col-lg-10">
-                    <div class="d-flex gap-2 py-2 px-3 rounded align-items-center justify-content-between mb-4 bg-gray-220">
+                    <div
+                        class="d-flex gap-2 py-2 px-3 rounded align-items-center justify-content-between mb-4 bg-gray-220">
                         <div class="">
                             <select name="filter" id="filter" class="form-select">
                                 <option value="price-desc">Harga : Tinggi ke Rendah</option>
@@ -65,7 +66,8 @@
                         <div>
                             <div class="position-relative">
                                 <input type="text" class="form-control pe-5" placeholder="Search...">
-                                <button class="btn border-0 position-absolute top-0 end-0 px-3" type="button" id="button-addon2">
+                                <button class="btn border-0 position-absolute top-0 end-0 px-3" type="button"
+                                    id="button-addon2">
                                     <i class="fas fa-search fa-sm fa-fw"></i>
                                 </button>
                             </div>
@@ -81,7 +83,8 @@
                                         style="object-fit: cover; object-position: center;">
                                     <div class="card-body p-2">
                                         <p class="product-title">{{ $item->title }}</p>
-                                        <p class="text-danger mb-2">Rp {{ number_format($item->price, 0, ',', '.') }}</p>
+                                        <p class="text-danger mb-2">Rp {{ number_format($item->price, 0, ',', '.') }}
+                                        </p>
                                         <a href="#" class="stretched-link"></a>
                                     </div>
                                 </div>
@@ -114,8 +117,10 @@
                         @foreach ($laundry as $index => $item)
                             <div class="owl-item d-flex align-self-stretch">
                                 <div class="card product-card">
-                                    <div class="product-card-image ratio ratio-4x3"
-                                        style="background-image: url('/images/product/{{ $item->images }}')"></div>
+                                    <img src="{{ url('/images/product/' . $item->images) }}" alt="{{ $item->images }}"
+                                        class="ratio ratio-4x3 img-fluid"
+                                        style="object-fit: cover; object-position: center;">
+
                                     <div class="card-body py-4">
                                         <div class="card-titles mb-2">
                                             <h5 class="mb-0">{{ $item->title }}</h5>

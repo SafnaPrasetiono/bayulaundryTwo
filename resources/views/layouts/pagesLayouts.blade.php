@@ -24,7 +24,10 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ route('index') }}">LaundryMu</a>
+            <a class="navbar-brand fw-bold d-flex border-0" href="{{ route('index') }}">
+                <span class="text-purple">Laundry</span>
+                <span class="text-dark">Mu</span>
+            </a>
             <a class="btn position-relative link-dark d-lg-none ms-auto" href="{{ route('order') }}">
                 <i class="fas fa-shopping-cart fa-sm fa-fw" aria-hidden="true"></i>
                 @if (session('cart') && count(session('cart')) > 0)
@@ -36,15 +39,9 @@
             <botton class="btn d-lg-none">
                 <i class="fas fa-search fa-sm fa-fw"></i>
             </botton>
-            @auth('users')
-                <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#slider">
-                    <i class="fas fa-bars fa-sm fa-fw"></i>
-                </button>
-            @else
-                <button class="btn d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                    <i class="fas fa-bars fa-sm fa-fw"></i>
-                </button>
-            @endauth
+            <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#slider">
+                <i class="fas fa-bars fa-sm fa-fw"></i>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav gap-2 align-items-stretch ms-lg-auto">
                     <li class="nav-item align-self-lg-center">
@@ -80,17 +77,19 @@
                             </a>
                         </li>
                     @else
-                        <li class="nav-item d-inline d-lg-none align-self-lg-center">
+                         <li class="nav-item d-inline d-lg-none align-self-lg-center">
                             <a class="nav-link" href="{{ route('signup') }}">Daftar</a>
                         </li>
                         <li class="nav-item d-none d-lg-inline align-self-lg-center">
-                            <a class="btn rounded-pill btn-outline-success" style="width: 120px" href="{{ route('signup') }}">Daftar</a>
+                            <a class="btn rounded-pill btn-outline-purple" style="width: 120px"
+                                href="{{ route('signup') }}">Daftar</a>
                         </li>
                         <li class="nav-item d-inline d-lg-none align-self-lg-center">
                             <a class="nav-link" href="{{ route('login') }}">Masuk</a>
                         </li>
                         <li class="nav-item d-none d-lg-inline align-self-lg-center">
-                            <a class="btn rounded-pill btn-success" style="width: 120px" href="{{ route('login') }}">Masuk</a>
+                            <a class="btn rounded-pill btn-purple" style="width: 120px"
+                                href="{{ route('login') }}">Masuk</a>
                         </li>
                     @endauth
                 </ul>
@@ -101,69 +100,92 @@
         {{ $slot }}
     </main>
 
-    <footer class="bg-primary text-light">
-        <div class="pt-5 pb-4">
+    <footer class="footer-gradient py-5">
+        <div class="py-2">
             <div class="container">
-                <div class="row g-4 mb-5">
+                <div class="row g-4 mb-5 align-items-stretch align-self-stretch">
                     <div class="col-12 col-md-7">
-                        <div class="me-0 me-md-5">
+                        <div class="footer-section me-0">
                             <h4 class="fw-bold">About Me</h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti beatae aperiam, modi
-                                architecto corporis amet adipisci assumenda, libero vero dicta nam, placeat eligendi
-                                cumque? Officiis, excepturi. Deserunt, nemo laborum. Nostrum!</p>
+                            <p>Selamat datang di layanan laundry kami! Kami berdedikasi memberikan layanan cuci terbaik,
+                                cepat, dan bersih. Dengan tenaga profesional dan peralatan modern, kami memastikan
+                                pakaian Anda terawat sempurna. Kepuasan pelanggan adalah prioritas kami. Terima kasih
+                                telah mempercayakan kebutuhan laundry Anda kepada kami. Kami siap melayani Anda!</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-5">
-                        <div class="row">
+                        <div class="row g-4">
                             <div class="col-12 col-md-6">
-                                <p class="fw-bold">About Website</p>
-                                <ul class="nav flex-column">
-                                    <a class="nav-link link-secondary px-0 link-light"
-                                        href="{{ route('privacy') }}">Privasi</a>
-                                    <a class="nav-link link-secondary px-0 link-light"
-                                        href="{{ route('about') }}">About Me</a>
-                                    <a class="nav-link link-secondary px-0 link-light"
-                                        href="{{ route('howpayment') }}">Cara Pemesanan</a>
-                                    <a class="nav-link link-secondary px-0 link-light"
-                                        href="{{ route('termcondition') }}">Syart & Ketentuan</a>
-                                </ul>
+                                <div class="footer-section">
+                                    <p class="fw-bold">About Website</p>
+                                    <ul class="nav flex-column">
+                                        <a class="nav-link footer-link" href="{{ route('privacy') }}">Privasi</a>
+                                        <a class="nav-link footer-link" href="{{ route('about') }}">About Me</a>
+                                        <a class="nav-link footer-link" href="{{ route('howpayment') }}">Cara
+                                            Pemesanan</a>
+                                        <a class="nav-link footer-link" href="{{ route('termcondition') }}">Syart &
+                                            Ketentuan</a>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <p class="fw-bold">Member Part</p>
-                                <ul class="nav flex-column">
-                                    <a class="nav-link link-secondary px-0 link-light" href="#">Masuk</a>
-                                    <a class="nav-link link-secondary px-0 link-light" href="#">Daftar</a>
-                                    <a class="nav-link link-secondary px-0 link-light" href="#">Join
-                                        Instagram</a>
-                                    <a class="nav-link link-secondary px-0 link-light" href="#">Join
-                                        Facebook</a>
-                                </ul>
+                                <div class="footer-section">
+                                    <p class="fw-bold">Member Part</p>
+                                    <ul class="nav flex-column">
+                                        <a class="nav-link footer-link" href="#">Masuk</a>
+                                        <a class="nav-link footer-link" href="#">Daftar</a>
+                                        <a class="nav-link footer-link" href="#">Join
+                                            Instagram</a>
+                                        <a class="nav-link footer-link" href="#">Join
+                                            Facebook</a>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="d-block">
-                    <hr class="soft">
+
+                <div class="footer-section-bottom">
                     <div
                         class="d-flex flex-column-reverse flex-md-row justify-content-center justify-content-md-between align-items-center">
-                        <span class="mb-0 py-2 text-center text-light">Copyrights ©2024 Eduport.
-                            Build by Safna Prasetiono</span>
+                        <span class="footer-copyright mb-0 py-2">
+                            <i class="fas fa-copyright me-2"></i>Copyrights ©2025 Website Laundry
+                        </span>
                         <ul class="nav">
-                            <a class="nav-link link-light" href="#">Link</a>
-                            <a class="nav-link link-light" href="#">Link</a>
+                            <li class="nav-item">
+                                <a class="nav-link link-light" href="https://github.com/kobayyy1" title="github">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-light"
+                                    href="https://www.instagram.com/_bayuady_?igsh=eTNqZThwMW5yZjQ="
+                                    title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link-light"
+                                    href="https://wa.me/+628557584375/?text=Hallo%20Admin%20Laundry" title="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+
             </div>
         </div>
     </footer>
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="slider" style="width: 21rem">
-        <div class="offcanvas-header">
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            @include('layouts.pagesMenuLayouts')
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="slider" style="max-width: 19rem">
+        <div class="position-relative overflow-y-auto">
+            <button type="button" class="btn position-absolute m-2" data-bs-dismiss="offcanvas">
+                <i class="fas fa-times fa-lg fa-fw"></i>
+            </button>
+            <div class="offcanvas-body">
+                @include('layouts.pagesMenuLayouts')
+            </div>
         </div>
     </div>
 
